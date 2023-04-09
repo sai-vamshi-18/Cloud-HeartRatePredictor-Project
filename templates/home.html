@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Heart Disease Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Heart Disease Predictor</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+      <input type="text" name="age" placeholder="Age" required="required" /><br>
+      
+      <label>Sex</label>
+    	<select name="sex" placeholder="Sex" required="required"> 
+        <option value="male">Male</option> 
+        <option value="female">Female</option> 
+      </select><br>  
+      
+      <label >Chest Pain Type</label>
+      <select name="chest_pain_type" placeholder="Chest Pain Type" required="required"> 
+        <option value="None">None</option> 
+        <option value="Typical Angina">Typical Angina</option> 
+        <option value="Atypical Angina">Atypical Angina</option>
+        <option value="Non-anginal Pain">Non-anginal Pain</option>
+        <option value="Asymptomatic">Asymptomatic</option> 
+      </select><br> 
+      
+      <input type="text" name="resting_blood_pressure" placeholder="Resting Blood Pressure" required="required" /><br>
+      
+      <input type="text" name="cholestrol" placeholder="Cholestrol" required="required" /><br>
+      
+      <label>Fasting Blood Sugar</label>
+      <select name="fasting_blood_sugar" placeholder="Fasting Blood Sugar" required="required"> 
+        <option value="Lower than 120mg/ml">Lower than 120mg/ml</option> 
+        <option value="Greater than 120mg/ml">Greater than 120mg/ml</option> 
+      </select><br> 
+    	
+      <label>Rest ECG</label>
+      <select name="rest_ecg" placeholder="Resting ECG" required="required"> 
+        <option value="Normal">Normal</option> 
+        <option value="ST-T Wave Abnormality">ST-T Wave Abnormality</option> 
+        <option value="Left Ventricular Hypertrophy">Left Ventricular Hypertrophy</option>  
+      </select><br> 
+      
+      <input type="text" name="max_heart_rate_achieved" placeholder="Max Heart Rate Achieved" required="required" /><br>
+      
+      <label>Exercise Induced Angina</label>
+      <select name="exercise_induced_angina" placeholder="" required="required"> 
+        <option value="No">No</option> 
+        <option value="Yes">Yes</option> 
+      </select><br> 
+      
+      <input type="text" name="st_depression" placeholder="ST Depression" required="required" /><br>
+      
+      <label>ST Slope</label>
+      <select name="st_slope" placeholder="ST Slope" required="required"> 
+        <option value="None">None</option> 
+        <option value="Upsloping">Upsloping</option>
+        <option value="Flat">Flat</option>
+        <option value="Downsloping">Downsloping</option> 
+      </select><br> 
+    	
+      <label>Number of Major Vessels</label>
+      <select name="number_of_majjor_vessels" placeholder="Number of Major Vessels" required="required"> 
+        <option value="Zero">Zero</option>
+        <option value="One">One</option>
+        <option value="Two">Two</option>
+        <option value="Three">Three</option>
+        <option value="Four">Four</option> 
+      </select><br> 
+      
+      <label>Thalassemia</label>
+      <select name="thalassemia" placeholder="Thalassemia" required="required"> 
+        <option value="None">None</option> 
+        <option value="Normal">Normal</option> 
+        <option value="Fixed Defect">Fixed Defect</option> 
+        <option value="Reversible Defect">Reversible Defect</option>  
+      </select><br> 
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ <!-- Please Consult a Doctor -->
+
+ {{ prediction_text }}
+
+</body>
+</html>
